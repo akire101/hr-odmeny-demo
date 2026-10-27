@@ -6,4 +6,9 @@
 .atlas-map .person-node{border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;justify-content:center;gap:3px;text-align:left}
 .atlas-map .person-node strong{font-size:13px;line-height:17px;margin:0}
 .atlas-map .person-node .node-kind,.atlas-map .person-node .map-node-state{font-size:10px;line-height:12px}
+.atlas-map .person-node{padding:6px 8px;gap:2px}
+.atlas-map .person-node strong{flex-shrink:0;line-height:16px;max-height:32px;width:100%;overflow:hidden;padding-right:4px}
+.atlas-map .person-node .node-position{display:none}
+.atlas-map .person-node .map-node-state{position:absolute;right:6px;top:7px;width:7px;height:7px;font-size:0;line-height:0;margin:0;padding:0;overflow:hidden}
+.atlas-map .person-node .map-node-state i{display:block;width:7px;height:7px;margin:0}
 .analytics-scope{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.analytics-scope p{margin-top:5px;font-size:12px}.analytics-scope .recurring-control{font-size:13px;font-weight:600}.analytics-scope input{width:19px!important;height:19px;min-height:19px}

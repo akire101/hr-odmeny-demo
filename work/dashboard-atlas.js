@@ -1,17 +1,18 @@
  'use strict';
-// Every reporting level runs horizontally; opening a branch shows one level at native zoom.
+// Managers retain their hierarchy; leaf employees share a compact box under their owner.
 function atlasLayout(focus='company',includePeople=true){
- const root=node(focus)||node('company'),children=new Map(),seen=new Set(),widths=new Map(),nodes=[],edges=[];
+ const root=node(focus)||node('company'),children=new Map(),seen=new Set(),widths=new Map(),nodes=[],edges=[],groups=[],packs=new Map(),bands=[],tops=[16];
  for(const n of org()){if(!includePeople&&n.kind==='person')continue;if(!children.has(n.parent))children.set(n.parent,[]);children.get(n.parent).push(n);}
- function measure(n){if(seen.has(n.id))throw Error('Cyklus v organizačnej štruktúre.');seen.add(n.id);const cs=children.get(n.id)||[],w=Math.max(n.kind==='person'?208:300,cs.reduce((sum,c)=>sum+measure(c),0));seen.delete(n.id);widths.set(n.id,w);return w;}
- const width=measure(root)+32;
- function place(n,left,depth){const person=n.kind==='person',w=person?192:280,h=person?60:112,x=left+(widths.get(n.id)-w)/2,y=16+depth*166;nodes.push({...n,x,y,width:w,height:h});let next=left;for(const c of children.get(n.id)||[]){place(c,next,depth+1);edges.push({from:n.id,to:c.id,person:c.kind==='person'});next+=widths.get(c.id);}}
+ const leaf=n=>n.kind==='person'&&!(children.get(n.id)||[]).length;
+ function measure(n,depth){if(seen.has(n.id))throw Error('Cyklus v organizačnej štruktúre.');seen.add(n.id);const cs=children.get(n.id)||[],people=cs.filter(leaf),branches=cs.filter(c=>!leaf(c)),cols=Math.min(3,people.length),pack=people.length?{people,cols,width:cols*176+(cols-1)*12+32,height:Math.ceil(people.length/cols)*76+32}:null;if(pack)packs.set(n.id,pack);bands[depth]=Math.max(bands[depth]||166,pack?112+20+pack.height+28:166);const w=Math.max(300,pack?.width||0,branches.reduce((sum,c)=>sum+measure(c,depth+1),0)+Math.max(0,branches.length-1)*28);seen.delete(n.id);widths.set(n.id,w);return w;}
+ const width=measure(root,0)+32;for(let i=1;i<bands.length;i++)tops[i]=tops[i-1]+bands[i-1];
+ function place(n,left,depth){const w=n.kind==='person'?176:280,h=n.kind==='person'?64:112,x=left+(widths.get(n.id)-w)/2,y=tops[depth];nodes.push({...n,x,y,width:w,height:h});const pack=packs.get(n.id);if(pack){const g={owner:n.id,x:left+(widths.get(n.id)-pack.width)/2,y:y+h+20,width:pack.width,height:pack.height,count:pack.people.length};groups.push(g);pack.people.forEach((p,i)=>{nodes.push({...p,x:g.x+16+(i%pack.cols)*188,y:g.y+32+Math.floor(i/pack.cols)*76,width:176,height:64});edges.push({from:n.id,to:p.id,person:true,grouped:true});});}let next=left;for(const c of (children.get(n.id)||[]).filter(c=>!leaf(c))){place(c,next,depth+1);edges.push({from:n.id,to:c.id,person:c.kind==='person'});next+=widths.get(c.id)+28;}}
  place(root,16,0);
- if(focus!=='company'&&node(root.parent)){const parent=node(root.parent);nodes.forEach(n=>n.y+=166);nodes.unshift({...parent,x:(width-280)/2,y:16,width:280,height:112});edges.unshift({from:parent.id,to:root.id});}
- const positions=new Map(nodes.map(n=>[n.id,n]));for(const e of edges){const a=positions.get(e.from),b=positions.get(e.to),cx=a.x+a.width/2;e.path=`M${cx} ${a.y+a.height} V${a.y+a.height+24} H${b.x+b.width/2} V${b.y}`;}
- return {kind:'atlas',nodes,edges,groups:[],width,height:Math.max(...nodes.map(n=>n.y+n.height))+24};
+ if(focus!=='company'&&node(root.parent)){const parent=node(root.parent);nodes.forEach(n=>n.y+=166);groups.forEach(g=>g.y+=166);nodes.unshift({...parent,x:(width-280)/2,y:16,width:280,height:112});edges.unshift({from:parent.id,to:root.id});}
+ const positions=new Map(nodes.map(n=>[n.id,n]));for(const e of edges){const a=positions.get(e.from),b=positions.get(e.to),cx=a.x+a.width/2,g=e.grouped?groups.find(g=>g.owner===a.id):null;e.path=g?`M${cx} ${a.y+a.height} V${g.y-8} H${g.x+6} V${b.y-6} H${b.x+b.width/2} V${b.y}`:`M${cx} ${a.y+a.height} V${a.y+a.height+24} H${b.x+b.width/2} V${b.y}`;}
+ return {kind:'atlas',nodes,edges,groups,width,height:Math.max(...nodes.map(n=>n.y+n.height),...groups.map(g=>g.y+g.height))+24};
 }
-function atlasGroupSvg(){return '';}
+function atlasGroupSvg(l){return (l?.groups||[]).map(g=>{const owner=l.nodes.find(n=>n.id===g.owner),cx=owner.x+owner.width/2;return `<path class="map-edge" stroke="${mapColor(owner)}" d="M${cx} ${owner.y+owner.height} V${g.y}"/><rect class="direct-member-frame atlas-member-frame" x="${g.x}" y="${g.y}" width="${g.width}" height="${g.height}" rx="10"/><text class="direct-member-caption" x="${g.x+16}" y="${g.y+20}">Priami podriadení · ${g.count}</text>`;}).join('');}
 let reviewPeoplePage=0,reviewPeopleFocus='';
 function reviewDirectLayout(focus='company',availableWidth=1160){
  const leader=node(focus)||node('company'),raw=org().filter(n=>n.parent===leader.id),reports=raw.filter(n=>!n.managerNode||!raw.some(c=>c.id===n.managerNode)),width=Math.max(340,availableWidth-24),people=reports.every(n=>n.kind==='person'),gap=16,pad=28,minCard=people?176:260,cols=Math.max(1,Math.min(reports.length||1,Math.floor((width-pad*2+gap)/(minCard+gap)))),cardWidth=Math.min(people?220:280,(width-pad*2-gap*(cols-1))/cols),cardHeight=people?76:140,top=220,rowStep=cardHeight+16;

@@ -33,6 +33,7 @@ Demo obsahuje fiktívnu spoločnosť s **350 zamestnancami, 24 externistami a 24
 ### Organizácia a prehľady
 
 - Organizačná mapa s postupným otváraním podriadených, vyhľadávaním konkrétneho človeka, zvýraznením trasy, priblížením a celou obrazovkou.
+- V rozšírenej mape sú zamestnanci zoskupení do ohraničených blokov pod svojím vedúcim, najviac v troch stĺpcoch. Každá osoba zostáva samostatne vyhľadateľná a klikateľná.
 - Viditeľný návrat „O úroveň vyššie“ a klikateľná cesta k nadriadeným.
 - Nad otvoreným vedúcim je karta jeho nadriadeného, dostupná dvojklikom alebo klávesom Enter. Tlačidlo Zavrieť zostáva dostupné aj pri posúvaní dlhých formulárov.
 - Úprava hierarchie HR: vytvorenie osoby či vetvy, doplnenie profilu a presúvanie kariet pomocou drag & drop vrátane poradia.
