@@ -20,6 +20,7 @@ Demo obsahuje fiktívnu spoločnosť s **350 zamestnancami, 24 externistami a 24
 ### Zadávanie a spracovanie odmien
 
 - Ručné zadanie viacerým pracovníkom aj samostatná odmena priamemu podriadenému na všetkých vedúcich úrovniach; zadávať môže aj HR.
+- Vedúci otvorí rovno kompaktný zoznam svojich priamych podriadených a vyplní iba odmeňovaných. Prázdne riadky sa neposielajú; HR má vyhľadávanie a výber z celej firmy.
 - Odôvodnenie alebo výber kritérií: štyri nezávislé checkboxy **KPI, PROJEKT, Extra, [parameter4]**, ktoré možno kombinovať. Názvy sú zatiaľ pracovné parametre, nie finálne pravidlá výpočtu.
 - Nahratie podkladov vedúcim alebo HR v zastúpení, vzorové CSV a kontroly údajov vrátane duplicít či neplatných súm.
 - HR koordinuje zber, vyžiada chýbajúce podklady a vykoná svoje schválenia. Vyplnenie za vedúceho je voliteľné zastupovanie; dokončené ručné aj nahraté podklady HR odošle rovno nadriadenému zastúpeného vedúceho, bez opätovného odosielania týmto vedúcim.
