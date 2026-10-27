@@ -27,7 +27,7 @@ function hrCoverConfirmOne(id){try{hrCoverCommit($('#hr-cover-reason').value,id)
 function personalCandidates(){
  if(period().closed||!personalCanAuthor())return [];
  const links=leaderBindings();
- if(demoRole!=='hr')return org().filter(n=>n.parent===personalManagerScope()&&(n.leader||n.kind==='person')).map(n=>({nodeId:n.id,number:n.number||links.get(n.id),name:n.leader||n.name,label:n.name})).filter(n=>n.number);
+ if(demoRole!=='hr')return org().filter(n=>n.parent===personalManagerScope()&&(n.leader||n.kind==='person')).map(n=>({nodeId:n.id,number:n.number||links.get(n.id),name:n.leader||n.name,label:n.name})).filter(n=>n.number&&n.number!==links.get(personalManagerScope()));
  const leaders=new Map(org().filter(n=>links.has(n.id)).map(n=>[links.get(n.id),n]));
  return org().filter(n=>n.kind==='person').map(n=>{const leader=leaders.get(n.number);return {nodeId:leader?.id||n.id,number:n.number,name:leader?.leader||n.name,label:leader?.name||node(n.parent)?.name};});
 }

@@ -23,3 +23,26 @@ function applyPresentationNames(data){
  }
  data.demoNamesVersion=1;return data;
 }
+
+// Management cards represent the same person as their payroll identity, never their own report.
+function alignLeaderParents(data){
+ for(const p of Object.values(data.periods)){
+  const index=new Map((p.org||[]).map(n=>[n.id,n]));
+  for(const [id,number] of presentationLeaderBindings(p)){
+   const manager=index.get(id),person=index.get(number);
+   if(!manager||!person)continue;
+   manager.rewardNumber=number;
+   person.parent=manager.parent;
+  }
+ }
+ return data;
+}
+function ownRewardRow(row){return db.version===4&&demoRole!=='hr'&&row.number===leaderBindings().get(personalManagerScope());}
+function manualRowVisible(row){return db.version!==4||demoRole==='hr'||ownRewardRow(row)||inside(row.number,personalManagerScope());}
+function manualRowEditable(row){return db.version!==4||demoRole==='hr'||!ownRewardRow(row)&&inside(row.number,personalManagerScope());}
+function assertNoSelfAward(rows,b){
+ for(const own of rows.filter(r=>!manualRowEditable(r))){
+ const before=b.rows.find(r=>r.number===own.number);
+ if(!before||own.cents!==before.cents||rewardJustification(own)!==rewardJustification(before)||JSON.stringify(rewardParameters(own))!==JSON.stringify(rewardParameters(before)))throw Error('Vlastnú odmenu nemôžete meniť. Zadáva ju váš nadriadený.');
+ }
+}

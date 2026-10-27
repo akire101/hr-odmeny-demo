@@ -10,7 +10,7 @@ function identity(role,id){demoRole=role;if(role==='team')demoTeam=node(id).batc
 fresh();const authorRoles=['team','department','unit','region','division','director'];const scenarios=org().filter(n=>authorRoles.includes(n.kind)).map(n=>({role:n.kind,id:n.id}));
 for(const spec of scenarios)check(spec.role+' '+spec.id+': strict direct reports and complete approval route',()=>{
  fresh();active='2026-09';identity(spec.role,spec.id);
- const expected=org().filter(n=>n.parent===spec.id&&(n.leader||n.kind==='person')).map(n=>n.id).sort(),people=personalCandidates();
+ const expected=org().filter(n=>n.parent===spec.id&&(n.leader||n.kind==='person')&&n.number!==leaderBindings().get(spec.id)).map(n=>n.id).sort(),people=personalCandidates();
  assert.deepEqual(Array.from(people.map(p=>p.nodeId)).sort(),Array.from(expected));assert.ok(people.length);assert.ok(people.every(p=>node(p.nodeId).parent===spec.id));assert.ok(people.every(p=>p.nodeId!==spec.id));
  const foreign=org().find(n=>(n.leader||n.kind==='person')&&n.id!==spec.id&&!expected.includes(n.id));personalDraft=null;personalEditor([foreign.id]);assert.equal(personalDraft,null);
  const recipient=people[0],otherMonth=JSON.stringify(db.periods['2026-10']),baseSum=total(allBatches().flatMap(b=>b.rows));
