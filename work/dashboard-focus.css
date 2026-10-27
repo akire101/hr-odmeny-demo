@@ -95,7 +95,7 @@ body[data-current-view="overview"] .focus-overview :is(.scope-batch,.focus-next)
 .approval-request>header{order:0}
 .approval-request>.request-actions{order:1;padding:14px 0;border-bottom:1px solid var(--edge)}
 .approval-request>.request-recipients{order:2}
-.approval-request>.request-more{order:3}
+.approval-request>.approval-leader{order:3}
 .approval-request>header{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--edge)}
 .approval-request>header p{color:inherit;font-size:16px;margin-bottom:5px}
 .approval-request small{display:block;color:var(--muted)}
@@ -105,11 +105,15 @@ body[data-current-view="overview"] .focus-overview :is(.scope-batch,.focus-next)
 .request-recipient>span{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .request-recipient p{grid-column:1/-1;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
 .request-recipient small{font-size:12px;font-weight:400;margin-top:3px}
-.request-more summary{cursor:pointer;padding:12px 0;font-weight:600;font-size:14px}
 .request-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:18px}
 .request-actions .request-detail{margin-left:auto;background:transparent}
 .request-actions>span{font-size:13px;color:var(--muted)}
 .approval-empty{padding:30px 0}
+.approval-leader{margin-top:20px;padding-top:18px;border-top:1px solid var(--edge)}
+.approval-leader h3{margin:0 0 8px;font-size:15px}
+.approval-leader>p{margin:6px 0 12px;font-size:13px}
+.approval-leader .manual-grid{margin-top:12px}
+.approval-leader input,.approval-leader textarea{width:100%;min-width:0}
 .approval-empty p{margin:10px 0 16px}
 .tree-parent-navigation{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--edge);border-bottom:1px solid var(--edge)}
 .tree-parent-navigation>span{display:flex;align-items:center;flex-wrap:wrap;gap:5px;min-width:0}

@@ -10,6 +10,8 @@ Demo obsahuje fiktívnu spoločnosť s **350 zamestnancami, 24 externistami a 24
 
 Následná oprava odstraňuje vedúceho zo zoznamu jeho vlastných podriadených. V ručnom podklade môže vidieť vlastný riadok iba na čítanie; vlastnú odmenu nemôže zadať ani zmeniť importom. Zadáva ju jeho nadriadený. Oprava zachováva existujúce sumy a exportné riadky aj pri načítaní uloženého dema.
 
+Schvaľovanie zobrazuje všetkých príjemcov bez rozbaľovania. Vedúci podkladu je oddelený od svojich podriadených; jeho priamy nadriadený mu môže priamo pri schvaľovaní zadať samostatnú odmenu, ktorá pokračuje na vyššie schválenie.
+
 ## Prečo dáva systém zmysel
 
 - **Vždy je jasný ďalší krok.** Panel „Čo ďalej“, upozornenia a mená schvaľovateľov ukazujú, čo chýba a kto má konať.
