@@ -22,6 +22,8 @@ body[data-current-view="overview"] .focus-status button{background:transparent}
 #content .focus-waiting button{border:0;background:transparent;padding:6px 0;min-height:0;font-weight:400;text-decoration:underline;text-underline-offset:3px}
 .focus-next.is-complete{background:transparent;border-color:var(--edge)}
 .focus-next.is-complete p{margin-bottom:0}
+.optional-award{border-top:1px solid var(--edge);border-bottom:0;margin-top:20px;padding-top:18px;padding-bottom:0}
+.optional-award p{margin:5px 0 0}
 .focus-waiting p{font-size:14px;margin:6px 0;line-height:1.6}
 .focus-details{margin-top:20px;border-top:1px solid var(--edge);padding-top:16px}
 .focus-details>summary{cursor:pointer;font-weight:600;padding:6px 0}
