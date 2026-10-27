@@ -38,3 +38,46 @@ body[data-current-view="overview"] .focus-overview :is(.scope-batch,.focus-next)
 .entry-submit{position:sticky;bottom:0;background:inherit;padding:14px 0 4px;border-top:1px solid var(--edge)}
 :root[data-theme="dark"] .focus-next{background:#302c27}
 @media(max-width:760px){.focus-overview .focus-next{padding:20px}.focus-next h3{font-size:21px}.focus-status{gap:10px 22px}.focus-task{align-items:flex-start;flex-direction:column}.focus-actions button{flex:1}.scenario-options select{max-width:100%}}
+
+/* One alignment for the scenario disclosure and entry actions on every page. */
+:root body #main .presentation{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start;padding:0;margin:0 0 20px;background:transparent;border:0}
+.presentation .scenario-options{width:100%;min-width:0}
+:root body .scenario-options summary{background:transparent;padding:8px 0}
+.scenario-options[open] select{width:min(100%,560px);display:block}
+.presentation .entry-shortcuts{justify-content:flex-start;align-items:center;gap:10px}
+.presentation .entry-shortcuts button{width:auto;flex:none;min-height:43px}
+.priority-label{display:block;color:var(--muted);margin-top:10px}
+.focus-upcoming{border-top:1px solid var(--edge);margin-top:22px;padding-top:6px}
+.focus-upcoming .focus-task:last-child{border-bottom:0;padding-bottom:0}
+.focus-upcoming .focus-task p{margin:5px 0;line-height:1.5}
+.focus-upcoming .focus-task button{flex-shrink:0}
+.approval-inbox{max-width:1080px}
+.approval-inbox>.sectionhead{align-items:flex-end;margin-bottom:22px}
+.approval-inbox>.sectionhead label{display:grid;gap:6px}
+.approval-request{padding:24px;border:1px solid var(--edge);border-radius:12px;background:#eee8de;margin-bottom:18px}
+.approval-request{display:flex;flex-direction:column}
+.approval-request>header{order:0}
+.approval-request>.request-actions{order:1;padding:14px 0;border-bottom:1px solid var(--edge)}
+.approval-request>.request-recipients{order:2}
+.approval-request>.request-more{order:3}
+.approval-request>header{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--edge)}
+.approval-request>header p{color:inherit;font-size:16px;margin-bottom:5px}
+.approval-request small{display:block;color:var(--muted)}
+.request-total{font-size:23px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.request-recipient{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 20px;padding:12px 0;border-bottom:1px solid var(--edge)}
+.request-recipient strong{font-size:15px}
+.request-recipient>span{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.request-recipient p{grid-column:1/-1;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.request-recipient small{font-size:12px;font-weight:400;margin-top:3px}
+.request-more summary{cursor:pointer;padding:12px 0;font-weight:600;font-size:14px}
+.request-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:18px}
+.request-actions .request-detail{margin-left:auto;background:transparent}
+.request-actions>span{font-size:13px;color:var(--muted)}
+.approval-empty{padding:30px 0}
+.approval-empty p{margin:10px 0 16px}
+.tree-parent-navigation{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--edge);border-bottom:1px solid var(--edge)}
+.tree-parent-navigation>span{display:flex;align-items:center;flex-wrap:wrap;gap:5px;min-width:0}
+.tree-parent-navigation .tree-crumb{font-size:12px;padding:5px 7px;background:transparent;border-color:transparent;white-space:normal;text-align:left}
+.tree-crumb[aria-current]{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+:root[data-theme=dark] .approval-request{background:#302c27}
+@media(max-width:760px){.approval-request{padding:18px}.request-total{font-size:20px}.approval-inbox>.sectionhead{align-items:flex-start;flex-direction:column}.approval-inbox>.sectionhead label{width:100%}.request-actions .request-detail{margin-left:0}.focus-upcoming .focus-task{gap:8px}.tree-parent-navigation{padding:12px;gap:10px}.presentation .entry-shortcuts button{flex:1 1 150px}}
