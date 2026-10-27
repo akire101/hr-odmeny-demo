@@ -2,6 +2,19 @@
 let reviewMode='complete',reviewRouteTeam=0,reviewPose=null,reviewDrag=null,reviewSelectedDraft=null,reviewIgnoreClick=0,reviewLocate=null,reviewFinding=false;
 let reviewHighlightRoute=true;
 const reviewUndo=[];
+function presentationPeriodState(code){
+ const p=db.periods[code],bs=p.batches.filter(b=>!b.cancelled&&b.rows.length),received=bs.filter(b=>b.submitted),levels=new Set(received.filter(b=>b.stage>=0&&b.stage<endStage()).map(b=>b.stage));
+ let label,text,tone='warn';
+ if(p.closed){label='Uzavretý · iba na čítanie';text='Údaje sú zamknuté. Vhodné na ukážku výsledkov a archívu.';tone='good';}
+ else if(!received.length){label='Nový · všetci odovzdávajú';text='Čistý začiatok zberu. Vedúci ešte neodovzdali podklady.';}
+ else if(bs.length&&bs.every(b=>b.submitted&&b.stage===endStage())&&!p.unassignedPeople?.length){label='Schválený · pripraviť výstupy';text='Schválenia sú hotové. HR môže uzavrieť mesiac a stiahnuť oba výstupy.';tone='good';}
+ else if(levels.size===endStage()){label='Čaká každý schvaľovací stupeň';text='Ukážka chýbajúcich podkladov, opráv a rozhodovania na každej úrovni.';}
+ else{label='Rozpracovaný · zber a schvaľovanie';text=received.length<bs.length?'Časť podkladov ešte chýba, prijaté podklady pokračujú schvaľovaním.':'Podklady sú odovzdané; zostávajú schválenia alebo opravy.';}
+ if(code==='2026-12')text+=' Živý postup od zadania po exporty obnovíte v menu „Ukážka zadanie → výstupy“.';
+ return {label,text,tone};
+}
+function presentationPeriodOptions(){return Object.entries(months).reverse().map(([code,name])=>{const state=presentationPeriodState(code);return `<option value="${code}" ${code===active?'selected':''}>${esc(name.replace(' · ukážka',''))} — ${esc(state.label)}${code==='2026-12'?' · obnoviteľná ukážka':''}</option>`;}).join('');}
+function renderPeriodPicker(){const state=presentationPeriodState(active),options=presentationPeriodOptions();$('#period').innerHTML=options;$('#scenario').innerHTML=options;$('#period-state').innerHTML=`<span class="badge ${state.tone}">${esc(state.label)}</span>`;const description=$('#period-description');if(description)description.textContent=state.text;}
 function reviewNextSteps(){
  const bs=batches(),mine=bs.filter(canDecide),tasks=[];
  const add=(title,text,action,label)=>tasks.push({title,text,action,label});

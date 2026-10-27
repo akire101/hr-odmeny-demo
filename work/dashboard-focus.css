@@ -24,6 +24,11 @@ body[data-current-view="overview"] .focus-status button{background:transparent}
 .focus-next.is-complete p{margin-bottom:0}
 .optional-award{border-top:1px solid var(--edge);border-bottom:0;margin-top:20px;padding-top:18px;padding-bottom:0}
 .optional-award p{margin:5px 0 0}
+.pagehead{flex-wrap:wrap;align-items:flex-start}
+.period-picker{width:440px;max-width:100%;min-width:0}
+.period-picker select{width:100%;font-size:13px}
+.pagehead .period-description{font-size:12px;line-height:1.5;margin-top:3px;max-width:60ch}
+@media(max-width:760px){.period-picker{width:100%}.period-picker select{font-size:12px}.period-picker .badge{white-space:normal}}
 .focus-waiting p{font-size:14px;margin:6px 0;line-height:1.6}
 .focus-details{margin-top:20px;border-top:1px solid var(--edge);padding-top:16px}
 .focus-details>summary{cursor:pointer;font-weight:600;padding:6px 0}
