@@ -7,23 +7,29 @@ aside#sidebar::-webkit-scrollbar-track{background:transparent}
 aside#sidebar::-webkit-scrollbar-thumb{background:#9b8a76;border-radius:5px}
 
 /* Keep one employee on one desktop row without changing validation. */
-#dialog:has(#manual-form){width:min(1200px,96vw)}
-#manual-form .manual-grid{margin-top:10px}
-#manual-form .manual-grid-head,#manual-form .manual-row{grid-template-columns:minmax(160px,.9fr) 112px minmax(0,2.7fr);gap:12px}
-#manual-form .manual-row{padding:8px 0;min-height:54px}
-#manual-form .manual-row>div:first-child{min-width:0;overflow-wrap:anywhere}
-#manual-form .manual-row input[data-manual-amount]{min-height:36px;padding:6px 9px;font-size:14px}
-#manual-form .manual-reason-cell{display:grid;grid-template-columns:minmax(160px,1fr) auto;gap:10px;align-items:center;min-width:0}
-#manual-form .manual-row textarea{height:36px;min-height:36px;padding:7px 9px;line-height:1.4;resize:vertical}
-#manual-form .reward-parameters{display:flex;gap:10px;flex-wrap:nowrap;border:0;padding:0;margin:0;min-width:0}
-#manual-form .reward-parameters legend{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-#manual-form .reward-parameters label{width:auto;min-height:32px;font-size:12px;gap:5px;white-space:nowrap}
-#manual-form .manual-summary{position:static;justify-content:flex-end;gap:14px;padding:5px 0;margin:0;border:0;background:transparent}
-#manual-form .manual-summary strong{font-size:18px}
-#manual-form .entry-submit{position:static;background:transparent;padding:14px 0 0}
+#dialog:has(:is(#manual-form,#personal-form)){width:min(1200px,96vw)}
+:is(#manual-form,#personal-form) .manual-grid{margin-top:10px}
+:is(#manual-form,#personal-form) .manual-grid-head,:is(#manual-form,#personal-form) .manual-row{grid-template-columns:minmax(160px,.9fr) 112px minmax(0,2.7fr);gap:12px}
+:is(#manual-form,#personal-form) .manual-row{padding:8px 0;min-height:54px}
+:is(#manual-form,#personal-form) .manual-row>div:first-child{min-width:0;overflow-wrap:anywhere}
+:is(#manual-form,#personal-form) .manual-row input[data-manual-amount]{min-height:36px;padding:6px 9px;font-size:14px}
+:is(#manual-form,#personal-form) .manual-reason-cell{display:grid;grid-template-columns:minmax(160px,1fr) auto;gap:10px;align-items:center;min-width:0}
+:is(#manual-form,#personal-form) .manual-row textarea{height:36px;min-height:36px;padding:7px 9px;line-height:1.4;resize:vertical}
+:is(#manual-form,#personal-form) .reward-parameters{display:flex;gap:10px;flex-wrap:nowrap;border:0;padding:0;margin:0;min-width:0}
+:is(#manual-form,#personal-form) .reward-parameters legend{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+:is(#manual-form,#personal-form) .reward-parameters label{width:auto;min-height:32px;font-size:12px;gap:5px;white-space:nowrap}
+:is(#manual-form,#personal-form) .manual-summary{position:static;justify-content:flex-end;gap:14px;padding:5px 0;margin:0;border:0;background:transparent}
+:is(#manual-form,#personal-form) .manual-summary strong{font-size:18px}
+:is(#manual-form,#personal-form) .entry-submit{position:static;background:transparent;padding:14px 0 0}
 .manual-search{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
 #manual-search{width:300px;min-height:36px;padding:7px 10px;font-size:13px}
 
 @media(min-width:1500px){.approval-inbox.multiple-requests{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.approval-inbox.multiple-requests>.sectionhead,.approval-inbox.multiple-requests>.focus-details,.approval-inbox.multiple-requests>.approval-empty{grid-column:1/-1;margin:0}.approval-inbox.multiple-requests>.approval-request{margin:0}}
-@media(max-width:1100px){#manual-form .manual-grid-head,#manual-form .manual-row{grid-template-columns:minmax(130px,1fr) 100px minmax(0,2fr)}#manual-form .manual-reason-cell{grid-template-columns:minmax(0,1fr)}#manual-form .reward-parameters{flex-wrap:wrap;gap:5px 12px}}
-@media(max-width:760px){#manual-form .manual-row{grid-template-columns:minmax(0,1fr) 96px;padding:10px 0}#manual-form .manual-reason-cell{grid-column:1/-1}#manual-form .reward-parameters label{min-height:40px}.manual-search{display:grid;gap:5px}#manual-search{width:100%}#manual-form .manual-summary{justify-content:space-between}}
+@media(max-width:1100px){:is(#manual-form,#personal-form) .manual-grid-head,:is(#manual-form,#personal-form) .manual-row{grid-template-columns:minmax(130px,1fr) 100px minmax(0,2fr)}:is(#manual-form,#personal-form) .manual-reason-cell{grid-template-columns:minmax(0,1fr)}:is(#manual-form,#personal-form) .reward-parameters{flex-wrap:wrap;gap:5px 12px}}
+@media(max-width:760px){:is(#manual-form,#personal-form) .manual-row{grid-template-columns:minmax(0,1fr) 96px;padding:10px 0}:is(#manual-form,#personal-form) .manual-reason-cell{grid-column:1/-1}:is(#manual-form,#personal-form) .reward-parameters label{min-height:40px}.manual-search{display:grid;gap:5px}#manual-search{width:100%}:is(#manual-form,#personal-form) .manual-summary{justify-content:space-between}}
+
+#personal-form .personal-form-rows{gap:0}
+#personal-form .personal-entry>label:not(.recurring-control){margin:0;display:block}
+#personal-form .personal-entry input[data-personal-amount]{max-width:none;width:100%;min-width:0;min-height:36px;padding:6px 9px;font-size:14px}
+#personal-form .manual-row strong{font-size:13px}
+#personal-form .manual-row small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
