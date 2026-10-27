@@ -21,7 +21,7 @@ function reviewNextSteps(){
  if(personalCanAuthor())add('Podľa potreby navrhnite samostatnú odmenu',demoRole==='hr'?'Vyhľadajte a označte jedného alebo viacerých pracovníkov.':'Odmeniť môžete priamych podriadených vo svojej vetve. Návrh pôjde vyšším schvaľovacím stupňom až po HR.','personal-choose','Vybrať pracovníkov');
  return tasks;
 }
-function reviewNextStepsPanel(){return `<section class="panel next-steps"><h2>Čo ďalej</h2><p>Postup pre rolu ${esc(roleNames[demoRole])} · ${months[active]}</p><ol class="steps">${reviewNextSteps().map((t,i)=>`<li class="step ${i===0?'current':''}"><span class="step-number">${i+1}</span><div><strong>${esc(t.title)}</strong><p>${esc(t.text)}</p></div>${button(t.label,t.action,'class="small"')}</li>`).join('')}</ol></section>`;}
+function reviewNextStepsPanel(){const task=reviewNextSteps()[0];return `<section class="focus-next" aria-labelledby="next-step-heading"><h2 id="next-step-heading">Čo ďalej</h2><h3>${esc(task.title)}</h3><p>${esc(task.text)}</p>${button(task.label,task.action,'class="primary"')}</section>`;}
 const reviewKey=()=>active+':'+demoRole+':'+enterpriseScopeId();
 const reviewEditing=()=>demoRole==='hr'&&!period().closed&&mapEditMode;
 const unassigned=()=>period().unassignedPeople||[];

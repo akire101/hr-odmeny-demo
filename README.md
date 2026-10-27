@@ -9,6 +9,7 @@ Demo obsahuje fiktívnu spoločnosť s **350 zamestnancami, 24 externistami a 24
 ## Prečo dáva systém zmysel
 
 - **Vždy je jasný ďalší krok.** Panel „Čo ďalej“, upozornenia a mená schvaľovateľov ukazujú, čo chýba a kto má konať.
+- **Stručný úvod podľa roly.** Jeden hlavný krok, stručný stav a priamy vstup „Zadať odmenu“. Podrobné súčty a vlastné návrhy sa zobrazia až po rozbalení; organizačné a schvaľovacie prehľady zostávajú v samostatných častiach.
 - **HR má prehľad o celom mesiaci.** Vidí chýbajúce podklady, priebeh schvaľovania, organizačné väzby aj pripravenosť výstupov na jednom mieste.
 - **Vedúci pracuje so svojou štruktúrou.** Prezentované pohľady obmedzujú sumy a grafy na jeho rozsah; podradené vetvy možno zahrnúť voľbou.
 - **Menej ručného dohľadávania.** Kto neodovzdal, komu treba pripomenúť podklady a kde odmena čaká, je priamo viditeľné.
