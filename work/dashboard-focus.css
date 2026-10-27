@@ -44,6 +44,14 @@ body[data-current-view="overview"] .focus-status button{background:transparent}
 .map-parent-card span{font-size:12px;color:var(--muted)}
 .parent-stem{display:block;width:1px;height:18px;background:var(--edge)}
 .review-map.is-expanded .map-column #map-viewport{flex:1;min-height:250px}
+.hr-cover-requests{margin-top:18px}
+.hr-cover-request{border:1px solid var(--edge);border-radius:9px;padding:14px 16px;margin:10px 0}
+.hr-cover-request>summary{display:list-item;cursor:pointer;list-style-position:outside;margin-left:16px;line-height:1.5}
+.hr-cover-request>summary>span:first-child{display:inline-block;vertical-align:top;margin-right:18px}
+.hr-cover-request small{display:block;font-size:12px;color:var(--muted)}
+.cover-expand-label{display:block;font-size:12px;text-decoration:underline;text-underline-offset:3px;color:var(--muted);margin-top:7px}
+.cover-recipients{padding-top:10px}
+.cover-recipients .request-recipient:last-child{border-bottom:0}
 .focus-waiting p{font-size:14px;margin:6px 0;line-height:1.6}
 .focus-details{margin-top:20px;border-top:1px solid var(--edge);padding-top:16px}
 .focus-details>summary{cursor:pointer;font-weight:600;padding:6px 0}
