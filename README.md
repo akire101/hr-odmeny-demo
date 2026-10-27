@@ -22,6 +22,7 @@ Demo obsahuje fiktívnu spoločnosť s **350 zamestnancami, 24 externistami a 24
 - Ručné zadanie viacerým pracovníkom aj samostatná odmena priamemu podriadenému na všetkých vedúcich úrovniach; zadávať môže aj HR.
 - Odôvodnenie alebo výber kritérií: štyri nezávislé checkboxy **KPI, PROJEKT, Extra, [parameter4]**, ktoré možno kombinovať. Názvy sú zatiaľ pracovné parametre, nie finálne pravidlá výpočtu.
 - Nahratie podkladov vedúcim alebo HR v zastúpení, vzorové CSV a kontroly údajov vrátane duplicít či neplatných súm.
+- HR koordinuje zber, vyžiada chýbajúce podklady a vykoná svoje schválenia. Vyplnenie za vedúceho je voliteľné zastupovanie; dokončené ručné aj nahraté podklady HR odošle rovno nadriadenému zastúpeného vedúceho, bez opätovného odosielania týmto vedúcim.
 - Viacstupňové schválenie: tím → oddelenie → úsek → región → divízia → generálny riaditeľ → HR; konkrétna trasa závisí od autora a hierarchie.
 - Stručné schvaľovacie karty ukazujú žiadateľa, príjemcov, sumy a dôvody. Schváliť alebo vrátiť možno priamo; história a ďalší príjemcovia sú dostupní po rozkliknutí. Vrátenie vyžaduje dôvod.
 - Vrátenie na opravu, zrušenie vlastného čakajúceho návrhu a výnimočné zastúpenie HR s povinným dôvodom.
@@ -31,6 +32,7 @@ Demo obsahuje fiktívnu spoločnosť s **350 zamestnancami, 24 externistami a 24
 
 - Organizačná mapa s postupným otváraním podriadených, vyhľadávaním konkrétneho človeka, zvýraznením trasy, priblížením a celou obrazovkou.
 - Viditeľný návrat „O úroveň vyššie“ a klikateľná cesta k nadriadeným.
+- Nad otvoreným vedúcim je karta jeho nadriadeného, dostupná dvojklikom alebo klávesom Enter. Tlačidlo Zavrieť zostáva dostupné aj pri posúvaní dlhých formulárov.
 - Úprava hierarchie HR: vytvorenie osoby či vetvy, doplnenie profilu a presúvanie kariet pomocou drag & drop vrátane poradia.
 - Menšie tímy bez stránkovania, stavy odovzdania a čitateľné väzby na nadriadených.
 - Stĺpcové, koláčové a trendové grafy s voľbou zahrnutia podradených štruktúr.

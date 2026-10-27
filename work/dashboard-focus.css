@@ -24,11 +24,26 @@ body[data-current-view="overview"] .focus-status button{background:transparent}
 .focus-next.is-complete p{margin-bottom:0}
 .optional-award{border-top:1px solid var(--edge);border-bottom:0;margin-top:20px;padding-top:18px;padding-bottom:0}
 .optional-award p{margin:5px 0 0}
+.hr-support{margin-top:20px;border-top:1px solid var(--edge);padding-top:16px}
+.hr-support summary{font-size:14px;cursor:pointer;font-weight:600}
+.hr-support p{font-size:13px;line-height:1.5;margin:10px 0 0}
 .pagehead{flex-wrap:wrap;align-items:flex-start}
 .period-picker{width:440px;max-width:100%;min-width:0}
 .period-picker select{width:100%;font-size:13px}
 .pagehead .period-description{font-size:12px;line-height:1.5;margin-top:3px;max-width:60ch}
 @media(max-width:760px){.period-picker{width:100%}.period-picker select{font-size:12px}.period-picker .badge{white-space:normal}}
+#dialog .dialog-head{position:sticky;top:0;z-index:30;margin:-26px -26px 20px;padding:18px 26px;background:#eee8de;border-bottom:1px solid var(--edge)}
+#dialog .dialog-head h2{min-width:0;overflow-wrap:anywhere}
+#dialog-close{flex-shrink:0}
+:root[data-theme=dark] #dialog .dialog-head{background:#302c27}
+.map-column{min-width:0;min-height:0;display:flex;flex-direction:column}
+.map-parent-row{display:flex;flex-direction:column;align-items:center;padding-top:16px;background:transparent}
+.map-parent-card{display:flex;flex-direction:column;align-items:center;gap:4px;max-width:320px;width:calc(100% - 32px);padding:12px 16px;text-align:center;white-space:normal}
+.map-parent-card small{font-size:11px;color:var(--muted)}
+.map-parent-card strong{font-size:15px}
+.map-parent-card span{font-size:12px;color:var(--muted)}
+.parent-stem{display:block;width:1px;height:18px;background:var(--edge)}
+.review-map.is-expanded .map-column #map-viewport{flex:1;min-height:250px}
 .focus-waiting p{font-size:14px;margin:6px 0;line-height:1.6}
 .focus-details{margin-top:20px;border-top:1px solid var(--edge);padding-top:16px}
 .focus-details>summary{cursor:pointer;font-weight:600;padding:6px 0}
