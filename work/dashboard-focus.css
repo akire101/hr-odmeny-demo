@@ -32,7 +32,10 @@ body[data-current-view="overview"] .focus-status button{background:transparent}
 .period-picker select{width:100%;font-size:13px}
 .pagehead .period-description{font-size:12px;line-height:1.5;margin-top:3px;max-width:60ch}
 @media(max-width:760px){.period-picker{width:100%}.period-picker select{font-size:12px}.period-picker .badge{white-space:normal}}
-#dialog .dialog-head{position:sticky;top:0;z-index:30;margin:-26px -26px 20px;padding:18px 26px;background:#eee8de;border-bottom:1px solid var(--edge)}
+#dialog{padding-top:0}
+#dialog .dialog-head{position:sticky;top:0;z-index:30;margin:0 -26px 20px;padding:18px 26px;background:#eee8de;border-bottom:1px solid var(--edge)}
+#dialog-content{display:flow-root}
+#dialog-content :is(input,textarea,select){scroll-margin-top:130px}
 #dialog .dialog-head h2{min-width:0;overflow-wrap:anywhere}
 #dialog-close{flex-shrink:0}
 :root[data-theme=dark] #dialog .dialog-head{background:#302c27}

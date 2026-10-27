@@ -26,6 +26,7 @@ Demo obsahuje fiktívnu spoločnosť s **350 zamestnancami, 24 externistami a 24
 - Viacstupňové schválenie: tím → oddelenie → úsek → región → divízia → generálny riaditeľ → HR; konkrétna trasa závisí od autora a hierarchie.
 - Stručné schvaľovacie karty ukazujú žiadateľa, príjemcov, sumy a dôvody. Schváliť alebo vrátiť možno priamo; história a ďalší príjemcovia sú dostupní po rozkliknutí. Vrátenie vyžaduje dôvod.
 - Vrátenie na opravu, zrušenie vlastného čakajúceho návrhu a výnimočné zastúpenie HR s povinným dôvodom.
+- V mimoriadnom potvrdení môže HR rozbaliť príjemcov, sumy a dôvody a potvrdiť žiadosti jednotlivo alebo celý zostávajúci výber. Okno nahratia podkladov ponúka aj ručné vyplnenie pre zvoleného vedúceho.
 - Uzavretie obdobia a stiahnutie dvoch CSV: HUMAN a externisti. Uzavretý mesiac je uzamknutý.
 
 ### Organizácia a prehľady
