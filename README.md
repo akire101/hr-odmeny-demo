@@ -20,7 +20,7 @@ Demo obsahuje fiktívnu spoločnosť s **350 zamestnancami, 24 externistami a 24
 ### Zadávanie a spracovanie odmien
 
 - Ručné zadanie viacerým pracovníkom aj samostatná odmena priamemu podriadenému na všetkých vedúcich úrovniach; zadávať môže aj HR.
-- Odôvodnenie alebo výber kritérií: štyri nezávislé checkboxy **[parameter 1], [parameter 2], [parameter 3], [parameter4]**, ktoré možno kombinovať. Názvy sú zatiaľ pracovné parametre, nie finálne pravidlá výpočtu.
+- Odôvodnenie alebo výber kritérií: štyri nezávislé checkboxy **KPI, PROJEKT, Extra, [parameter4]**, ktoré možno kombinovať. Názvy sú zatiaľ pracovné parametre, nie finálne pravidlá výpočtu.
 - Nahratie podkladov vedúcim alebo HR v zastúpení, vzorové CSV a kontroly údajov vrátane duplicít či neplatných súm.
 - Viacstupňové schválenie: tím → oddelenie → úsek → región → divízia → generálny riaditeľ → HR; konkrétna trasa závisí od autora a hierarchie.
 - Stručné schvaľovacie karty ukazujú žiadateľa, príjemcov, sumy a dôvody. Schváliť alebo vrátiť možno priamo; história a ďalší príjemcovia sú dostupní po rozkliknutí. Vrátenie vyžaduje dôvod.

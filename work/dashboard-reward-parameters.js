@@ -1,5 +1,6 @@
 'use strict';
-const rewardParameterNames={p1:'[parameter 1]',p2:'[parameter 2]',p3:'[parameter 3]',p4:'[parameter4]'};
+const rewardParameterNames={p1:'KPI',p2:'PROJEKT',p3:'Extra',p4:'[parameter4]'};
+function refreshRewardParameterLabels(data){for(const period of Object.values(data.periods))for(const batch of period.batches)for(const row of [...batch.rows,...(batch.versions||[]).flatMap(v=>v.rows)])if(rewardParameters(row).length&&row.justification!==undefined)row.reason=rewardOptions({parameters:row.parameters,reason:row.justification}).reason;}
 function rewardParameters(row){return Array.isArray(row?.parameters)?Object.keys(rewardParameterNames).filter(p=>row.parameters.includes(p)):[];}
 function rewardJustification(row){return row?.justification!==undefined?row.justification:row?.reason||'';}
 function rewardParameterControls(context,index,row){const selected=rewardParameters(row);return `<fieldset class="reward-parameters"><legend>Parametre odmeny · možno vybrať viac</legend>${Object.entries(rewardParameterNames).map(([id,label])=>`<label><input type="checkbox" data-reward-context="${context}" data-reward-index="${index}" data-reward-parameter="${id}" data-${context}-parameter="${index}" value="${id}" ${selected.includes(id)?'checked':''}> ${label}</label>`).join('')}</fieldset>`;}
